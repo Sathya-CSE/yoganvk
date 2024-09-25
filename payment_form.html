@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Form</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <h1>Payment Form</h1>
+    <form action="/charge" method="POST">
+        <script
+            src="https://checkout.stripe.com/checkout.js"
+            class="stripe-button"
+            data-key="YOUR_PUBLISHABLE_KEY"  
+            data-amount="2000"
+            data-name="Test Payment"
+            data-description="Example charge"
+            data-currency="usd"
+            data-email="customer@example.com">
+        </script>
+    </form>
+</body>
+</html>

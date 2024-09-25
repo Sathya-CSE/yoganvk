@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omsakthi</title>
+    <style>
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+        #i1{
+            margin-left: 65px;
+            margin-top: 120px;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        ul {
+          background-color: hotpink;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5px;
+            height: 90px;
+            position: fixed; 
+            top: -18px; 
+            width: 100%;
+        }
+        li {
+            float: right;
+            
+        }
+        li a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 16px; /* Adjusted padding */
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"] {
+            padding: 6px; /* Adjusted padding */
+            margin-right: 5px;
+        }
+        button[type="submit"] {
+            padding: 6px; /* Adjusted padding */
+        }
+        .logo {
+            margin-right: 20px; /* Adjusted margin */
+        }
+
+    
+
+
+        *, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+body {
+ 
+  background-color: #e8e8e8;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: black;
+  font-size: 40px;
+}
+.inner-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.card {
+  flex-basis: 33.33333%;
+  padding: 15px;
+
+
+}
+.inner-card  {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 30px;
+}
+.inner-card:hover{
+  box-shadow: 5px 6px 7px 8px  rgba(0,0,0,.1);
+  border-color: black;
+  width: 300px;
+  height: 410px;
+  
+}
+.img-wrapper {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 10px;
+}
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.content {
+  margin-bottom: 20px;
+}
+.content h1 {
+  font-weight: 900;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #444;
+}
+.content p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+.btn-wrapper {
+  display: block;
+  text-align: center;
+}
+
+
+
+.light-box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.6);
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms ease-out;
+}
+.box {
+  width: 600px;
+  height: 400px;
+  background-color: #fff;
+  transform: scale(0);
+  transition: all 200ms ease-in-out;
+  padding: 10px;
+  box-shadow: 0 3px 9px rgba(0,0,0,.1);
+  position: relative;
+}
+.box-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 15px;
+}
+.box .light-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.box .close-btn {
+  position: absolute;
+  z-index: 100;
+  font-size: 30px;
+  color: #ccc;
+  left: 100%;
+  top: 0;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 35px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 200ms linear;
+}
+/* Effect */
+.effect .light-box {
+  opacity: 1;
+  visibility: visible;
+}
+.effect .light-box .box {
+  transform: scale(1);
+}
+
+@media (max-width: 780px) {
+  .card {
+    flex-basis: 50%;
+    
+  }
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    flex-basis: 5100%;
+    
+  }
+  .box .close-btn {
+    margin-left: 0;
+    left: 80%;
+    top: -12%;
+  }
+}
+
+
+.ft {
+            background-color: hotpink;
+            color: black;
+            text-align: left;
+            padding: 30px;
+            word-spacing:50px;           
+        }
+
+
+a:hover{
+  color: white;
+}
+
+
+a{
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <a href="/omsakthipg">
+    <ul>
+        <li> 
+            <div class="navbar"></div>
+            <div class="dropdown">
+              <button class="dropbtn">Menu
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/ayyappanpg">Ayyappan Devotional</a>
+                <a href="/muruganpg">Murugan Devotional</a>
+                <a href="/omsakthipg">Omsakthi Devotional</a>
+              </div>
+            </div>
+          </div></li>
+        <li class="logo"><img src="{{ url_for('static', filename='logo.png') }}" alt="NVK" width="150" height="80"></li> <!-- Adjusted logo size -->
+        <li class="search-container">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </li>
+  
+        <li><a href="/homepg">Home</a></li>
+        <li><a href="/loginpg">Login/Signup</a></li>
+        <li><a href="/cartpg">Cart</a></li>
+        <li><a href="/aboutpg">About</a></li>    
+    </ul><br><br><br><br><br><br>
+
+    <div class="wrapper">
+      <div class="container">
+      
+        <div class="inner-wrapper">
+          
+          <div class="card">
+            <div class="inner-card">
+                <div class="img-wrapper">
+                  <a href="/view2pg"> <img src="{{ url_for('static', filename='p3.jpg') }}" alt=""></a>
+                </div>
+                <div class="content">
+                    <h1>Maroon Color Dhoti</h1>
+                    <p><center><b>Rs.600</b></center></p>
+                </div>
+                <div class="btn-wrapper">
+                    <button onclick="addItem('Maroon Color Dhothi', 600)" style="width: 80px;height: 30px;background-color: steelblue;text-decoration: none;color: white;">Add to cart</a></button>
+                </div>
+            </div>
+        </div>
+        
+         
+        <div class="card">
+          <div class="inner-card">
+            <div class="img-wrapper">
+              <a href="/view4pg"> <img src="{{ url_for('static', filename='p5.jpg') }}" alt=""></a>
+            </div>
+            <div class="content">
+              <h1>Red Color Dhoti</h1>
+              <p><Center><b>Rs.450</b></Center></p>
+            </div>
+            <div class="btn-wrapper">
+              <button  onclick="addItem('Red Color Dhothi', 450)" style="width: 80px;height: 30px;background-color: steelblue;text-decoration: none;color: white;">Add to cart</a></button>
+            </div>
+          </div>
+        </div>
+          
+        <div class="card">
+          <div class="inner-card">
+            <div class="img-wrapper">
+              <a href="/view10pg"><img src="{{ url_for('static', filename='b8.png') }}" alt=""></a>
+            </div>
+            <div class="content">
+              <h1>Red Color Dhoti</h1>
+              <p><Center><b>Rs.450</b></Center></p>
+            </div>
+            <div class="btn-wrapper">
+              <button onclick="addItem('Red Color Dhoti',450)" style="width: 80px;height: 30px;background-color: steelblue;text-decoration: none;color: white;">Add to cart</a></button>
+            </div>
+          </div>
+        </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  
+    <pre>
+
+
+
+
+
+
+    </pre>
+    <div class="ft">
+    &nbsp;NVK.©2025.Copyrights_Received. <a href="/contactpg">Contact_us</a> <a href="/aboutpg">About_us</a>&nbsp;<a href="#"><i class="fa fa-instagram" style="font-size:30px;color:rgb(255, 0, 119)"></i></a>&nbsp;<a href="#"><i class="fa fa-youtube-play" style="font-size:30px;color:red"></i></a>&nbsp;<a href="#"><i class="fa fa-facebook-f" style="font-size:30px;color:rgb(114, 44, 245)"></i></a></div>
+  
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('input[name="search"]');
+            const searchButton = document.querySelector('.search-container button');
+
+            function navigateToPage() {
+                const query = searchInput.value.toLowerCase().trim();
+                if (query === 'ayyappan') {
+                    window.location.href = '/ayyappanpg';
+                } else if (query === 'murugan') {
+                    window.location.href = '/muruganpg';
+                } else if (query === 'omsakthi') {
+                    window.location.href = '/omsakthipg';
+                } else {
+                    alert('No page found for the entered keyword');
+                }
+            }
+
+            searchButton.addEventListener('click', navigateToPage);
+
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent form submission
+                    navigateToPage();
+                }
+            });
+        });
+
+          // Define the addItem function
+          function addItem(name, price) {
+            if (typeof(Storage) !== "undefined") {
+                var selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+                var existingItem = selectedItems.find(item => item.name === name);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    selectedItems.push({ name: name, price: price, quantity: 1 });
+                }
+                localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+                alert("Item added to cart!");
+            } else {
+                alert("Sorry, your browser does not support web storage. Please upgrade to a modern browser.");
+            }
+        }
+
+</script>
+</body>
+</html>
+

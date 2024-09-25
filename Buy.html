@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            font-family: Arial;
+        }
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        #i1 {
+            margin-left: 65px;
+            margin-top: 120px;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        ul {
+            background-color: hotpink;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 5px;
+            height: 90px;
+            position: fixed;
+            top: -18px;
+            width: 100%;
+        }
+        li {
+            float: right;
+        }
+        li a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 16px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"] {
+            padding: 6px;
+            margin-right: 5px;
+        }
+        button[type="submit"] {
+            padding: 6px;
+        }
+        .logo {
+            margin-right: 20px;
+        }
+        #c {
+            margin-top: 150px;
+        }
+        .ft {
+            background-color: hotpink;
+            color: black;
+            text-align: left;
+            padding: 30px;
+            word-spacing: 50px;
+        }
+        a:hover {
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        pre {
+            text-align: match-parent;
+            font-size: large;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .ft {
+            background-color: hotpink;
+            color: black;
+            text-align: left;
+            padding: 30px;
+            word-spacing: 50px;
+        }
+        a:hover {
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        #customer-details {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #payment-method {
+            margin-top: 10px;
+        }
+        #payment-fields {
+            display: none;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        h1 {
+            padding-top: 100px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<ul>
+    <li>
+        <div class="navbar"></div>
+        <div class="dropdown">
+            <button class="dropbtn">Menu
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/ayyappanpg">Ayyappan Devotional</a>
+                <a href="/muruganpg">Murugan Devotional</a>
+                <a href="/omsakthipg">Omsakthi Devotional</a>
+            </div>
+        </div>
+    </li>
+    <li class="logo"><img src="{{ url_for('static', filename='logo.png') }}" alt="NVK" width="150" height="80"></li>
+    <li class="search-container">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </li>
+    <li><a href="/homepg">Home</a></li>
+    <li><a href="/loginpg">Login/Signup</a></li>
+    <li><a href="/cartpg">Cart</a></li>
+    <li><a href="/aboutpg">About</a></li>
+</ul>
+<center>
+    <div id="checkout-items">
+        <h1>Checkout Items</h1>
+        <div id="checkout-items-content"></div>
+    </div>
+</center>
+<div id="customer-details">
+    <h2>Customer Details</h2>
+    <form id="customer-form">
+        <button type="button" id="add-address-btn">Add Address</button>
+        <div id="addresses"></div>
+        <h2>Payment Method</h2>
+        <select id="payment-method" name="payment-method" required>
+            <option value="cash-on-delivery">Cash on Delivery</option>
+            <option value="card">Credit/Debit Card</option>
+            <option value="upi">UPI Payment</option>
+        </select><br><br>
+        <div id="payment-fields">
+            <input type="text" name="cardholder" placeholder="Cardholder Name" required><br><br>
+            <input type="text" name="cardnumber" placeholder="Card Number" required><br><br>
+            <input type="text" name="expiry" placeholder="Expiry Date (MM/YY)" required><br><br>
+            <input type="text" name="cvv" placeholder="CVV" required><br><br>
+        </div>
+        <button type="submit">Place Order</button>
+    </form>
+</div>
+<div id="address-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Add Address</h2>
+        <form id="address-form">
+            <input type="text" name="address-name" placeholder="Name" required><br><br>
+            <input type="text" name="address-phone" placeholder="Phone No" required><br><br>
+            <input type="text" name="address-line" placeholder="Address" required><br><br>
+            <input type="text" name="address-city" placeholder="City" required><br><br>
+            <input type="text" name="address-state" placeholder="State" required><br><br>
+            <input type="text" name="address-zip" placeholder="ZIP Code" required><br><br>
+            <button type="button" id="save-address-btn">Save Address</button>
+        </form>
+    </div>
+</div>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+    
+</pre>
+<div class="ft">
+    &nbsp;NVK.©2025.Copyrights_Received. <a href="contact.html">Contact_us</a> <a href="about.html">About_us</a>&nbsp;<a href="#"><i class="fa fa-instagram" style="font-size:30px;color:rgb(255, 0, 119)"></i></a>&nbsp;<a href="#"><i class="fa fa-youtube-play" style="font-size:30px;color:red"></i></a>&nbsp;<a href="#"><i class="fa fa-facebook-f" style="font-size:30px;color:rgb(114, 44, 245)"></i></a>
+</div>
+<script>
+     document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('input[name="search"]');
+            const searchButton = document.querySelector('.search-container button');
+
+            function navigateToPage() {
+                const query = searchInput.value.toLowerCase().trim();
+                if (query === 'ayyappan') {
+                    window.location.href = '/ayyappanpg';
+                } else if (query === 'murugan') {
+                    window.location.href = '/muruganpg';
+                } else if (query === 'omsakthi') {
+                    window.location.href = '/omsakthipg';
+                } else {
+                    alert('No page found for the entered keyword');
+                }
+            }
+
+            searchButton.addEventListener('click', navigateToPage);
+
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent form submission
+                    navigateToPage();
+                }
+            });
+        });
+    // Event listener for payment method change
+    document.getElementById("payment-method").addEventListener("change", function() {
+        var paymentMethod = this.value;
+        var paymentFields = document.getElementById("payment-fields");
+        if (paymentMethod === "card") {
+            paymentFields.style.display = "block";
+        } else {
+            paymentFields.style.display = "none";
+        }
+    });
+
+    // Event listener for form submission
+    document.getElementById("customer-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        var customerData = {};
+        formData.forEach(function(value, key) {
+            customerData[key] = value;
+        });
+        var selectedAddresses = [];
+        var checkboxes = document.querySelectorAll('input[name="selected-address"]:checked');
+        checkboxes.forEach(function(checkbox) {
+            selectedAddresses.push(JSON.parse(checkbox.value));
+        });
+        customerData["selectedAddresses"] = selectedAddresses;
+        if (validateCardDetails(customerData)) {
+            console.log("Order placed:", customerData);
+            window.location.href = "conform.html";
+        } else {
+            alert("Invalid card details. Please check your input.");
+        }
+    });
+
+    // Function to validate card details
+    function validateCardDetails(data) {
+        if (data["payment-method"] !== "card") {
+            return true;
+        }
+        var cardholder = data["cardholder"];
+        var cardnumber = data["cardnumber"];
+        var expiry = data["expiry"];
+        var cvv = data["cvv"];
+        var cardNumberPattern = /^\d{16}$/;
+        var expiryPattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+        var cvvPattern = /^\d{3,4}$/;
+        if (!cardholder || !cardNumberPattern.test(cardnumber) || !expiryPattern.test(expiry) || !cvvPattern.test(cvv)) {
+            return false;
+        }
+        return true;
+    }
+
+    var modal = document.getElementById("address-modal");
+    var btn = document.getElementById("add-address-btn");
+    var span = document.getElementsByClassName("close-btn")[0];
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    var addressForm = document.getElementById("address-form");
+    var addressesDiv = document.getElementById("addresses");
+    var addresses = [];
+
+    document.getElementById("save-address-btn").addEventListener("click", function() {
+        var formData = new FormData(addressForm);
+        var addressData = {};
+        formData.forEach(function(value, key) {
+            addressData[key] = value;
+        });
+        addresses.push(addressData);
+        var addressId = "address-" + addresses.length;
+        var addressDiv = document.createElement("div");
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = addressId;
+        checkbox.name = "selected-address";
+        checkbox.value = JSON.stringify(addressData);
+        var label = document.createElement("label");
+        label.htmlFor = addressId;
+        label.innerHTML = "<strong>Name:</strong> " + addressData["address-name"] + ", " +
+                          "<strong>Phone:</strong> " + addressData["address-phone"] + ", " +
+                          "<strong>Address:</strong> " + addressData["address-line"] + ", " +
+                          addressData["address-city"] + ", " + addressData["address-state"] + " - " +
+                          addressData["address-zip"];
+        addressDiv.appendChild(checkbox);
+        addressDiv.appendChild(label);
+        addressesDiv.appendChild(addressDiv);
+        addressForm.reset();
+        modal.style.display = "none";
+    });
+</script>
+</body>
+</html>

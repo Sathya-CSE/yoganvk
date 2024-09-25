@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+
+    <style>
+
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+ 
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        ul {
+          background-color: hotpink;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5px;
+            height: 90px;
+            position: fixed; 
+            top: -18px; 
+            width: 100%;
+        }
+        li {
+            float: right;
+        }
+        li a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 16px; /* Adjusted padding */
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"] {
+            padding: 6px; /* Adjusted padding */
+            margin-right: 5px;
+        }
+        button[type="submit"] {
+            padding: 6px; /* Adjusted padding */
+        }
+        .logo {
+            margin-right: 20px; /* Adjusted margin */
+        }
+
+
+        .ft {
+            background-color: hotpink;
+            color: black;
+            text-align: left;
+            padding: 30px;
+            word-spacing:50px;           
+        }
+
+
+a:hover{
+  color: white;
+}
+
+a{
+            text-decoration: none;
+            color: black;
+        }
+
+        pre{
+            text-align: match-parent;
+            font-size: large;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+     
+
+    </style>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+      <a href="/contactpg">
+        <ul>
+            <li> 
+                <div class="navbar"></div>
+                <div class="dropdown">
+                  <button class="dropbtn">Menu
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="/ayyappanpg">Ayyappan Devotional</a>
+                    <a href="/muruganpg">Murugan Devotional</a>
+                    <a href="/omsakthipg">Omsakthi Devotional</a>
+                  </div>
+                </div>
+              </div></li>
+            <li class="logo"><img src="{{ url_for('static', filename='logo.png') }}" alt="NVK" width="150" height="80"></li> <!-- Adjusted logo size -->
+            <li class="search-container">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </li>
+      
+            <li><a href="/homepg">Home</a></li>
+            <li><a href="/loginpg">Login/Signup</a></li>
+            <li><a href="/cartpg">Cart</a></li>
+            <li><a href="/aboutpg">About</a></li>    
+        </ul>
+    
+    <br><br><br><br><br><br><br><form><center><h1><b>&nbsp;Contact Us</b></h1><br>
+          <h3>NVK</h3>
+          <pre>V.Yoganandam,
+Chinappanayakkan palayam
+    Komarapalayam - 638183, Tamil Nadu, India
+    Customer Support: +91 9750168838 | Click here for WhatsApp: 9750168838
+    Our Working Hours: Monday - Saturday (9.00 am - 7.00 pm)
+        </pre></center></form>
+
+        <pre>
+
+
+
+
+        </pre>
+        <div class="ft">
+        &nbsp;NVK.©2025.Copyrights_Received. <a href="/contactpg">Contact_us</a> <a href="/aboutpg">About_us</a>&nbsp;<a href="#"><i class="fa fa-instagram" style="font-size:30px;color:rgb(255, 0, 119)"></i></a>&nbsp;<a href="#"><i class="fa fa-youtube-play" style="font-size:30px;color:red"></i></a>&nbsp;<a href="#"><i class="fa fa-facebook-f" style="font-size:30px;color:rgb(114, 44, 245)"></i></a></div>
+      </a>
+
+<script> 
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('input[name="search"]');
+  const searchButton = document.querySelector('.search-container button');
+
+  function navigateToPage() {
+      const query = searchInput.value.toLowerCase().trim();
+      if (query === 'ayyappan') {
+          window.location.href = '/ayyappanpg';
+      } else if (query === 'murugan') {
+          window.location.href = '/muruganpg';
+      } else if (query === 'omsakthi') {
+          window.location.href = '/omsakthipg';
+      } else {
+          alert('No page found for the entered keyword');
+      }
+  }
+
+  searchButton.addEventListener('click', navigateToPage);
+
+  searchInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+          event.preventDefault(); // Prevent form submission
+          navigateToPage();
+      }
+  });
+});
+</script>
+</body>
+</html>

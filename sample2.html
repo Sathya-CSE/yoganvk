@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <style>
+        /* CSS styles for checkout page */
+        #customer-details {
+            text-align: center;
+            margin-top: 20px; /* Adjust margin as needed */
+        }
+
+        #payment-method {
+            margin-top: 10px; /* Adjust margin as needed */
+        }
+
+        #payment-fields {
+            display: none; /* Hide payment fields by default */
+        }
+
+        /* Styles for modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar and other elements -->
+
+    <center>
+        <div id="checkout-items">
+            <h1>Checkout Items</h1>
+            <div id="checkout-items-content"></div>
+        </div>
+    </center>
+
+    <div id="customer-details">
+        <h2>Customer Details</h2>
+        <form id="customer-form">
+             
+
+            <button type="button" id="add-address-btn">Add Address</button>
+            <div id="addresses"></div>
+
+            <h2>Payment Method</h2>
+            <select id="payment-method" name="payment-method" required>
+                <option value="cash-on-delivery">Cash on Delivery</option>
+                <option value="card">Credit/Debit Card</option>
+                <option value="upi">UPI Payment</option>
+            </select><br><br>
+
+            <div id="payment-fields">
+                <input type="text" name="cardholder" placeholder="Cardholder Name"><br><br>
+                <input type="text" name="cardnumber" placeholder="Card Number"><br><br>
+                <input type="text" name="expiry" placeholder="Expiry Date (MM/YY)"><br><br>
+                <input type="text" name="cvv" placeholder="CVV"><br><br>
+            </div>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <!-- Modal for adding new address -->
+    <div id="address-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Add Address</h2>
+            <form id="address-form">
+                <input type="text" name="address-name" placeholder="Name" required><br><br>
+                <input type="text" name="address-phone" placeholder="Phone No" required><br><br>
+                <input type="text" name="address-line" placeholder="Address" required><br><br>
+                <input type="text" name="address-city" placeholder="City" required><br><br>
+                <input type="text" name="address-state" placeholder="State" required><br><br>
+                <input type="text" name="address-zip" placeholder="ZIP Code" required><br><br>
+                <button type="button" id="save-address-btn">Save Address</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        
+
+        // Event listener for payment method change
+        document.getElementById("payment-method").addEventListener("change", function() {
+            var paymentMethod = this.value;
+            var paymentFields = document.getElementById("payment-fields");
+
+            // Toggle visibility of payment-related input fields based on selected payment method
+            if (paymentMethod === "card") {
+                paymentFields.style.display = "block";
+            } else {
+                paymentFields.style.display = "none";
+            }
+        });
+
+        // Event listener for form submission
+        document.getElementById("customer-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            var customerData = {};
+
+            // Convert form data to JSON
+            formData.forEach(function(value, key) {
+                customerData[key] = value;
+            });
+
+            // Append selected items to customer data
+            customerData["selectedItems"] = selectedItems;
+
+            // Process the order (e.g., send data to server, clear localStorage, etc.)
+            console.log("Order placed:", customerData);
+
+            // Redirect to order confirmation page
+            window.location.href = "order_confirmation.html";
+        });
+
+        // JavaScript to handle modal
+        var modal = document.getElementById("address-modal");
+        var btn = document.getElementById("add-address-btn");
+        var span = document.getElementsByClassName("close-btn")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // JavaScript to handle address form submission
+        var addressForm = document.getElementById("address-form");
+        var addressesDiv = document.getElementById("addresses");
+        var addresses = []; // Array to store addresses
+
+        document.getElementById("save-address-btn").addEventListener("click", function() {
+            var formData = new FormData(addressForm);
+            var addressData = {};
+
+            formData.forEach(function(value, key) {
+                addressData[key] = value;
+            });
+
+            addresses.push(addressData); // Add the new address to the array
+
+            // Display the saved address
+            var addressDiv = document.createElement("div");
+            addressDiv.innerHTML = "<p><strong>Name:</strong> " + addressData["address-name"] + "</p>" +
+                                   "<p><strong>Phone:</strong> " + addressData["address-phone"] + "</p>" +
+                                   "<p><strong>Address:</strong> " + addressData["address-line"] + ", " +
+                                   addressData["address-city"] + ", " + addressData["address-state"] + " - " +
+                                   addressData["address-zip"] + "</p>";
+
+            addressesDiv.appendChild(addressDiv);
+
+            // Clear the form fields
+            addressForm.reset();
+
+            // Close the modal
+            modal.style.display = "none";
+        });
+    </script>
+</body>
+</html>
+

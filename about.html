@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+
+    <style>
+
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+ 
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        ul {
+          background-color: hotpink;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2px 5px;
+            height: 90px;
+            position: fixed; 
+            top: -18px; 
+            width: 100%;
+        }
+        li {
+            float: right;
+        }
+        li a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 16px; /* Adjusted padding */
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"] {
+            padding: 6px; /* Adjusted padding */
+            margin-right: 5px;
+        }
+        button[type="submit"] {
+            padding: 6px; /* Adjusted padding */
+        }
+        .logo {
+            margin-right: 20px; /* Adjusted margin */
+        }
+
+
+
+        pre{
+          text-align: justify;
+          margin-left: 20px;
+          margin-right: 20px;
+          
+        }
+        h3{
+          margin-top: 20px;
+        }
+        h1{
+          margin-top: 150px;
+        }
+
+        
+.ft {
+            background-color: hotpink;
+            color: black;
+            text-align: left;
+            padding: 30px;          
+            word-spacing:50px;           
+        }
+
+a:hover{
+  color: white;
+}
+
+.desp{
+  margin-left: 125px;
+  border: 1px;
+  height: 500px;
+  width: 770px;
+  margin-top: -15px;
+}
+
+a{
+            text-decoration: none;
+            color: black;
+        }
+
+        p{
+           
+            font-size: large;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+
+    </style>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+      <a href="/aboutpg">
+        <ul>
+            <li> 
+                <div class="navbar"></div>
+                <div class="dropdown">
+                  <button class="dropbtn">Menu
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="/ayyappanpg">Ayyappan Devotional</a>
+                    <a href="/muruganpg">Murugan Devotional</a>
+                    <a href="/omsakthipg">Omsakthi Devotional</a>
+                  </div>
+                </div>
+              </div></li>
+            <li class="logo"><img src="{{ url_for('static', filename='logo.png') }}" alt="NVK" width="150" height="80"></li> <!-- Adjusted logo size -->
+            <li class="search-container">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </li>
+      
+            <li><a href="/homepg">Home</a></li>
+            <li><a href="/loginpg">Login/Signup</a></li>
+            <li><a href="/cartpg">Cart</a></li>
+            <li><a href="/aboutpg">About</a></li>    
+        </ul>
+    
+    <center><h1><b>About Us</b></h1><br><br>
+    <h3>V.YOGANANDAM</h3>
+    <h4>Founder & Chairman of NVK</h4></center><br><br>
+    <div class="desp">
+    <p>NVK was founded at Komarapalayam in Tamil Nadu by entrepreneur and visionary, Mr V.Yoganandam. 
+      He started the company with a single, unwavering vision—to deliver quality men’s ethnic wear to people 
+      in the southern states.<br><br>
+
+      While NVK started out small in 2025, Mr Yoganandam's zeal soon helped it scale great heights. Since its 
+      inception, NVK has steadily expanded its presence, ushering in a manufacturing revolution and enhancing 
+      the significance of our cherished traditional dhotis.<br><br>
+      
+      NVK has many firsts to its credit. It is the first company to traditional dhotis, the first company to 
+      advertise dhotis across different media, the market leader in dhotis across South India.<br><br>
+      
+      Even in modern times, the dhoti—which is the traditional attire of the South Indian male—has not lost its 
+      sheen. In fact, its significance as the preferred formal ethnic wear for men has increased dramatically 
+      in recent times and South Indian men wear the dhoti with great pride at a variety of functions. A large 
+      part of the credit for this goes to NVK. Today, 50 out of every 100 dhotis sold in Tamil Nadu, Andhra Pradesh, 
+      Kerala and Karnataka, bear the distinct ‘NVK’ brand name. The company boasts of a turnover running across 
+      several crores and its business continues to grow exponentially each year. Across the decades, NVK has 
+      continued to innovate in an effort to deliver value to customers and deliver a practical and comfortable 
+      product. At a time when even the elderly were opting for western wear, Mr Yoganandam managed to create a 
+      huge buzz and interest in dhotis.<br><br>
+      
+      NVK is also guided by a noble mission.The company’s overarching goal is to uplift the well-being of weavers 
+      and rekindle the pride associated with the timeless dhotis. With an unwavering commitment to promoting 
+      indigenous attire, the company collaborates closely with weavers, dealers, vendors, retailers, employees, and 
+      valued customers to realize this vision. In its dedicated pursuit, the company has brought fresh hope and 
+      improved opportunities to weavers, ensuring that they reap the rightful rewards of their labour while safeguarding 
+      the dignity of every individual.<br><br>
+      
+      NVK has also raised awareness about the intrinsic value of dhotis, turning them into a symbol of Indian tradition 
+      that resonates throughout the country. While NVK has been honoured with numerous awards and accolades over the years, 
+      the ultimate validation of its 42-year legacy lies in the trust that its esteemed customers have placed in the brand. 
+      With the continued love and support of its customers, the company is committed to further nurturing the heritage of 
+      tradition and propelling it into the future.<br><br>
+      </p></div>
+
+      <pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </pre>
+      <div class="ft">
+      &nbsp;NVK.©2025.Copyrights_Received. <a href="/contactpg">Contact_us</a> <a href="/aboutpg">About_us</a>&nbsp;<a href="#"><i class="fa fa-instagram" style="font-size:30px;color:rgb(255, 0, 119)"></i></a>&nbsp;<a href="#"><i class="fa fa-youtube-play" style="font-size:30px;color:red"></i></a>&nbsp;<a href="#"><i class="fa fa-facebook-f" style="font-size:30px;color:rgb(114, 44, 245)"></i></a></div></a>
+      
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('input[name="search"]');
+            const searchButton = document.querySelector('.search-container button');
+
+            function navigateToPage() {
+                const query = searchInput.value.toLowerCase().trim();
+                if (query === 'ayyappan') {
+                    window.location.href = '/ayyappanpg';
+                } else if (query === 'murugan') {
+                    window.location.href = '/muruganpg';
+                } else if (query === 'omsakthi') {
+                    window.location.href = '/omsakthipg';
+                } else {
+                    alert('No page found for the entered keyword');
+                }
+            }
+
+            searchButton.addEventListener('click', navigateToPage);
+
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent form submission
+                    navigateToPage();
+                }
+            });
+        });
+</script>
+</body>
+</html>
